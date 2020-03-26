@@ -1,4 +1,5 @@
 FROM node:10
+# Imagen de platziapp
 
 # si edito algun archivo de este contexto el npm install
 # debera ejecutarse de nuevo pues se vio afectado
