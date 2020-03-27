@@ -12,7 +12,11 @@ services:
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      # al dar un rango de puertos
+      # permite que si el servicio se escala
+      # a multiples contenedores
+      # no haya conflicto con el uso del puerto
+      - "3000-3010:3000"
     volumes:
       # esto solo no funcionaria, ya que sobreescribe el node modules
       - ./:/usr/src
