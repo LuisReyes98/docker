@@ -2,13 +2,23 @@ version: "3.7"
 
 services:
   app:
-    image: platziapp
+    # image: platziapp
+    # en lugar de usar una imagen custom a la cual le hicimos build
+    # hazle build a la imagen Ejecutando el dockerfile
+    # del path descrito endonde se encuentre
+    build: .
     environment:
       MONGO_URL: "mongodb://db:27017/test"
     depends_on:
       - db
     ports:
       - "3000:3000"
+    volumes:
+      # esto solo no funcionaria, ya que sobreescribe el node modules
+      - ./:/usr/src
+      # con esta instruccion se dice que este directorio no debe ser
+      # sobreescrito, asiendo que esto funcione
+      - /usr/src/node_modules
 
   db:
     image: mongo
