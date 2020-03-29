@@ -22,6 +22,8 @@ WORKDIR /usr/src
 
 RUN npm install --only=production
 
+# aqui solo trae los archivos de produccion
+# ademas el path es dentro del contenedor que llamamos builder
 COPY --from=builder ["/usr/src/index.js", "/usr/src/"]
 
 EXPOSE 3000
